@@ -2,10 +2,11 @@ import React, { Component } from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { hot } from 'react-hot-loader';
-import Header from './Header';
 import * as actions from '../actions';
 
-const Dashboard = () => <h2>Dashboard</h2>;
+import Header from './Header';
+import Bootpack from './Bootpack';
+import Landing from './Landing';
 
 class App extends Component {
   componentDidMount() {
@@ -15,21 +16,13 @@ class App extends Component {
   render() {
     return (
       <div>
-        <Header />
-        <div className="jumbotron">
-          <h1 className="display-4">Amazing React, Bootstrap and Webpack</h1>
-          <p className="lead">Created with love</p>
-          <hr className="my-4" />
-          <p>
-            It uses utility classes for typography and spacing to space content
-            out within the larger container.
-          </p>
-          <p className="lead">
-            <a className="btn btn-primary btn-lg" href="#" role="button">
-              Learn more
-            </a>
-          </p>
-        </div>
+        <BrowserRouter>
+          <div>
+            <Header />
+            <Route exact path="/pack" component={Bootpack} />
+            <Route exact path="/land" component={Landing} />
+          </div>
+        </BrowserRouter>
       </div>
     );
   }
